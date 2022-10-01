@@ -1,12 +1,15 @@
-let express = require('express');
-let bodyParser = require('body-parser');
-let cors = require('cors');
-let config = require('config');
+const express = require('express');
+const bodyParser = require('body-parser');
+const xmlparser = require('express-xml-bodyparser');
+const cors = require('cors');
+const config = require('config');
 
 const app = new express();
 const port = config.port;
 
 app.use(cors());
+app.use(xmlparser());
+app.use(bodyParser.text());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -14,13 +17,29 @@ app.get("/ping", function(req, res) {
   return res.send("pong");
 });
 
-app.get("/json/echo", function(req, res) {
-  return res.json({ping: "pong"});
+app.get("/headers", function(req, res) {
+  return res.json(req.headers);
+});
+
+app.get("/query", function(req, res) {
+  return res.json(req.query);
 });
 
 
-app.post("/json/echo", function(req, res) {
+app.get("/echo/json", function(req, res) {
+  return res.json({ping: "pong"});
+});
+
+app.post("/echo/json", function(req, res) {
   return res.json(req.body);
+});
+
+app.post("/echo/text", function(req, res) {
+  return res.send(req.body);
+});
+
+app.post("/echo/xml", function(req, res) {
+  return res.send(req.body);
 });
 
 app.listen(port, function() {
