@@ -3,9 +3,11 @@ const bodyParser = require('body-parser');
 const xmlparser = require('express-xml-bodyparser');
 const cors = require('cors');
 const config = require('config');
+const multer = require('multer');
 
 const app = new express();
 const port = config.port;
+const upload = multer();
 
 app.use(cors());
 app.use(xmlparser());
@@ -25,7 +27,6 @@ app.get("/query", function(req, res) {
   return res.json(req.query);
 });
 
-
 app.get("/echo/json", function(req, res) {
   return res.json({ping: "pong"});
 });
@@ -40,6 +41,10 @@ app.post("/echo/text", function(req, res) {
 
 app.post("/echo/xml", function(req, res) {
   return res.send(req.body);
+});
+
+app.post("/echo/multipartForm", upload.none(), function(req, res) {
+  return res.json(req.body);
 });
 
 app.listen(port, function() {
