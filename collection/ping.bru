@@ -1,0 +1,21 @@
+meta {
+  name: ping
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/ping
+  body: none
+}
+
+assert {
+  res.status: 200
+}
+
+tests {
+  test("should ping pong", function() {
+    const data = res.getBody();
+    expect(data).to.equal('pong');
+  });
+}

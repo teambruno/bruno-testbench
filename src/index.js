@@ -47,6 +47,10 @@ app.post("/echo/multipartForm", upload.none(), function(req, res) {
   return res.json(req.body);
 });
 
+app.get("/redirect-to-ping", function(req, res) {
+  return res.redirect("/ping");
+});
+
 app.listen(port, function() {
   console.log(`Testbench started on port: ${port}`);
 });
