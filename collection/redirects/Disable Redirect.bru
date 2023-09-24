@@ -18,7 +18,7 @@ script:pre-request {
 }
 
 tests {
-  test("should redirect to ping", function() {
+  test("should disable redirect to ping", function() {
     const data = res.getBody();
     expect(data).to.equal('Found. Redirecting to /ping');
   });
