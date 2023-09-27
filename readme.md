@@ -12,5 +12,13 @@ npm start
 The bruno collection is located in the `collection` directory.
 You can open it in Bruno.
 
+### Run Bru CLI on Collection
+```bash
+cd collection
+bru run --env Local
+```
+
+![cli demo](demo/cli-demo.png)
+
 ### License
 [MIT](LICENSE)
