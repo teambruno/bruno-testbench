@@ -5,6 +5,10 @@ A simple expressjs server that I use to test bruno.
 ### Start Server
 This will start the server on port 6000
 ```bash
+# install node dependencies
+npm install
+
+# start server
 npm start
 ```
 
