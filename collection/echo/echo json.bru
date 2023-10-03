@@ -1,0 +1,20 @@
+meta {
+  name: echo json
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/echo/json
+  body: json
+}
+
+headers {
+  foo: bar
+}
+
+body:json {
+  {
+    "ping": "pong"
+  }
+}

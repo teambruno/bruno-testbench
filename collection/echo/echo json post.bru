@@ -1,0 +1,21 @@
+meta {
+  name: echo json post
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{host}}/echo/json
+  body: json
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "access_token": "{{token}}",
+    "clientVersion": "1.0.0.0"
+  }
+}
