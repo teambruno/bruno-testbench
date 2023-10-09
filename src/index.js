@@ -17,8 +17,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 const authBearer = require('./auth/bearer');
+const authBasic = require('./auth/basic');
+const authCookie = require('./auth/cookie');
+const { set } = require('lodash');
 
 app.use('/api', authBearer);
+app.use('/api', authBasic);
+app.use('/api', authCookie);
 
 app.get("/ping", function(req, res) {
   return res.send("pong");

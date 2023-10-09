@@ -6,11 +6,20 @@ meta {
 
 get {
   url: {{host}}/ping
-  body: none
+  body: json
+  auth: basic
+}
+
+vars:pre-request {
+  m4: 1
 }
 
 assert {
   res.status: 200
+}
+
+script:post-response {
+  console.log(res.getBody());
 }
 
 tests {

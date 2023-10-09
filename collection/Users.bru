@@ -1,0 +1,18 @@
+meta {
+  name: Users
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://reqres.in/api/users?page=2
+  body: none
+  auth: none
+}
+
+script:post-response {
+  const {get} = require('lodash');
+  
+  const page = get(res.getBody(), 'page');
+  console.log('page', page)
+}

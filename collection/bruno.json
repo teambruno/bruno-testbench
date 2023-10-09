@@ -5,12 +5,20 @@
   "proxy": {
     "enabled": false,
     "protocol": "http",
-    "hostname": "localhost",
-    "port": "4000",
+    "hostname": "{{proxyHostname}}",
+    "port": 4000,
     "auth": {
       "enabled": false,
       "username": "",
       "password": ""
+    }
+  },
+  "scripts": {
+    "moduleWhitelist": [
+      "crypto"
+    ],
+    "filesystemAccess": {
+      "allow": true
     }
   }
 }

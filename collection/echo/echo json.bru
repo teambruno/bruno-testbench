@@ -6,15 +6,24 @@ meta {
 
 get {
   url: {{host}}/echo/json
-  body: json
+  body: none
+  auth: none
 }
 
 headers {
   foo: bar
 }
 
-body:json {
-  {
-    "ping": "pong"
-  }
+auth:basic {
+  username: asd
+  password: j
+}
+
+auth:bearer {
+  token: 
+}
+
+script:pre-request {
+  // console.log("hello");
+  bru.setVar("foo", "foo-world-2");
 }

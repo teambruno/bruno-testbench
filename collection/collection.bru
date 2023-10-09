@@ -1,0 +1,24 @@
+headers {
+  check: again
+}
+
+auth {
+  mode: none
+}
+
+auth:basic {
+  username: bruno
+  password: {{basicAuthPassword}}
+}
+
+auth:bearer {
+  token: {{bearerAuthToken}}
+}
+
+script:pre-request {
+  console.log("Collection Level pre-req script");
+}
+
+script:post-response {
+  console.log("Collection Level post-res script");
+}

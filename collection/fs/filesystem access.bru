@@ -1,0 +1,42 @@
+meta {
+  name: filesystem access
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/pingsd
+  body: none
+  auth: none
+}
+
+script:pre-request {
+  const fs = require('fs');
+  const path = require('path');
+  
+  const filepath = path.join(bru.cwd(), "file.json");
+  const content = fs.readFileSync(filepath, 'utf-8');
+  
+  console.log(content);
+}
+
+script:post-response {
+  const fs = require('fs');
+  const path = require('path');
+  
+  const filepath = path.join(bru.cwd(), "file.json");
+  const content = fs.readFileSync(filepath, 'utf-8');
+  
+  console.log(content);
+}
+
+tests {
+  const fs = require('fs');
+  const path = require('path');
+  const crypto = require('crypto');
+  
+  const filepath = path.join(bru.cwd(), "file.json");
+  const content = fs.readFileSync(filepath, 'utf-8');
+  
+  console.log(content);
+}

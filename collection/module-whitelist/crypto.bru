@@ -1,0 +1,26 @@
+meta {
+  name: crypto
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/ping/{{userId}}
+  body: none
+  auth: none
+}
+
+vars:pre-request {
+  userId: 12
+}
+
+script:pre-request {
+  const crypto = require('crypto');
+  
+  const dataToHash = 'Hello, Bruno!';
+  const sha256Hash = crypto.createHash('sha256');
+  sha256Hash.update(dataToHash);
+  const hashedValue = sha256Hash.digest('hex');
+  
+  console.log('SHA-256 Hash:', hashedValue);
+}

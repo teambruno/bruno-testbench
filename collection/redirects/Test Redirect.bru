@@ -7,11 +7,12 @@ meta {
 get {
   url: {{host}}/redirect-to-ping
   body: none
+  auth: none
 }
 
 assert {
   res.status: 200
-  res.body: pongq
+  res.body: pong
 }
 
 tests {
