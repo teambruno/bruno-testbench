@@ -42,7 +42,11 @@ app.get("/echo/json", function(req, res) {
 });
 
 app.post("/echo/json", function(req, res) {
-  return res.json(req.body);
+  // return res.json(req.body);
+  // set timeout of 10 seconds
+  setTimeout(() => {
+    return res.json(req.body);
+  }, 3000);
 });
 
 app.post("/echo/text", function(req, res) {

@@ -16,9 +16,15 @@ auth:bearer {
 }
 
 script:pre-request {
-  console.log("Collection Level pre-req script");
+  console.log("Hi from collection req");
 }
 
 script:post-response {
-  console.log("Collection Level post-res script");
+  console.log("Hi from collection res");
+}
+
+docs {
+  # bruno-testbench 🐶
+  
+  This is a test collection that I am using to test various functionalities around bruno
 }

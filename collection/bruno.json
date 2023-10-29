@@ -3,15 +3,16 @@
   "name": "bruno-testbench",
   "type": "collection",
   "proxy": {
-    "enabled": false,
+    "use": false,
     "protocol": "http",
     "hostname": "{{proxyHostname}}",
     "port": 4000,
     "auth": {
       "enabled": false,
-      "username": "",
-      "password": ""
-    }
+      "username": "anoop",
+      "password": "password"
+    },
+    "bypassProxy": ""
   },
   "scripts": {
     "moduleWhitelist": [
@@ -20,5 +21,9 @@
     "filesystemAccess": {
       "allow": true
     }
+  },
+  "clientCertificates": {
+    "enabled": true,
+    "certs": []
   }
 }

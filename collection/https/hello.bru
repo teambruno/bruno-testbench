@@ -1,11 +1,11 @@
 meta {
-  name: ping
+  name: hello
   type: http
   seq: 1
 }
 
 get {
-  url: {{host}}/ping
+  url: https://localhost:4443
   body: none
   auth: none
 }
@@ -20,24 +20,8 @@ auth:awsv4 {
 }
 
 vars:pre-request {
-  m4: true
+  m4: 1
   pong: pong
-}
-
-assert {
-  res.status: eq 201
-  ~res.body: eq {{pong}}
-}
-
-script:pre-request {
-  console.log(bru.getEnvName());
-}
-
-tests {
-  test("should ping pong", function() {
-    const data = res.getBody();
-    expect(data).to.equal(bru.getVar("pong"));
-  });
 }
 
 docs {
