@@ -1,0 +1,15 @@
+meta {
+  name: users
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://reqres.in/api/users
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 201
+}
