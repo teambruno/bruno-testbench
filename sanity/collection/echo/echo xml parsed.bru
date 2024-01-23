@@ -1,0 +1,17 @@
+meta {
+  name: echo xml parsed
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{host}}/api/echo/xml-parsed
+  body: xml
+  auth: none
+}
+
+body:xml {
+  <hello>
+    <world>bruno</world>
+  </hello>
+}

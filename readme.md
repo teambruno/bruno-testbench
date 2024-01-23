@@ -1,28 +1,7 @@
-# bruno-testbench
+# bruno-examples
 
-A simple expressjs server that I use to test bruno.
+The repo is a set of packages/subrepos used to test Bruno.
 
-### Start Server
-This will start the server on port 6000
-```bash
-# install node dependencies
-npm install
-
-# start server
-npm start
-```
-
-### Collection
-The bruno collection is located in the `collection` directory.
-You can open it in Bruno.
-
-### Run Bru CLI on Collection
-```bash
-cd collection
-bru run --env Local
-```
-
-![cli demo](demo/cli-demo.png)
-
-### License
-[MIT](LICENSE)
+[sanity](/sanity) - A simple sanity testbench.
+[http-proxy](/http-proxy) - A simple http proxy testbench.
+[ssl](/ssl) - A simple ssl testbench.
