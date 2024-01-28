@@ -15,3 +15,21 @@ body:xml {
     <world>bruno</world>
   </hello>
 }
+
+assert {
+  res.status: eq 200
+}
+
+tests {
+  test("should return parsed xml", function() {
+    const data = res.getBody();
+    expect(res.getBody()).to.eql({
+      "hello": {
+        "world": [
+          "bruno"
+        ]
+      }
+    });
+  });
+  
+}

@@ -13,3 +13,15 @@ post {
 body:text {
   hello
 }
+
+assert {
+  res.status: eq 200
+}
+
+tests {
+  test("should return plain text", function() {
+    const data = res.getBody();
+    expect(res.getBody()).to.eql("hello");
+  });
+  
+}

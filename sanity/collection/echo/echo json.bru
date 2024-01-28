@@ -29,6 +29,20 @@ body:json {
   }
 }
 
+assert {
+  res.status: eq 200
+}
+
 script:pre-request {
   bru.setVar("foo", "foo-world-2");
+}
+
+tests {
+  test("should return json", function() {
+    const data = res.getBody();
+    expect(res.getBody()).to.eql({
+      "hello": "bruno"
+    });
+  });
+  
 }
