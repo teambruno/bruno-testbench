@@ -4,9 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "node .",
-    "start:proxy": "node src/proxy-server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -14,7 +12,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/usebruno/bruno-testbench/issues"
   },
