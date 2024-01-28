@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   test:
+    name: Run Bruno Sanity Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,6 +24,6 @@ jobs:
         uses: dorny/test-reporter@v1
         if: success() || failure()
         with:
-          name: Bruno API Tests
+          name: Test Report
           path: sanity/collection/junit.xml
           reporter: java-junit
