@@ -1,0 +1,28 @@
+name: Bruno Sanity API Tests
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  checks: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies and run tests
+        run: |
+          cd sanity/collection
+          npm install
+          npm run test
+
+      - name: Publish Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Bruno API Tests
+          path: sanity/collection/report.xml
+          reporter: java-junit
