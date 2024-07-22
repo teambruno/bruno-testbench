@@ -1,21 +1,35 @@
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
-process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+const fs = require("fs");
+const https = require("https");
+const express = require("express");
+
+const app = express();
 
 const options = {
-  key: fs.readFileSync(path.resolve(__dirname, '../certs/server.key')),
-  cert: fs.readFileSync(path.resolve(__dirname, '../certs/server.crt')),
-  rejectUnauthorized: false
+  key: fs.readFileSync("./server_certs/server.key"),
+  cert: fs.readFileSync("./server_certs/server.crt"),
+  ca: fs.readFileSync("./client_certs/ca.crt"),
+  requestCert: true,
+  rejectUnauthorized: true,
 };
 
-const server = https.createServer(options, (req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello, secure World!\n');
+app.use((req, res, next) => {
+  console.log("Received request:", req.method, req.url);
+  if (!req.client.authorized) {
+    console.error(
+      "Client certificate not authorized:",
+      req.client.authorizationError
+    );
+    return res.status(401).send("Client certificate authentication failed.");
+  }
+  next();
 });
 
-const port = 4443;
+app.get("/", (req, res) => {
+  res.send("Hello, secure world!");
+});
 
-server.listen(port, () => {
-  console.log(`Server is running on https://localhost:${port}`);
+const httpsServer = https.createServer(options, app);
+
+httpsServer.listen(8443, () => {
+  console.log("HTTPS Server running on port 8443");
 });
