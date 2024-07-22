@@ -1,4 +1,3 @@
----
 Creating client certs:
 
 Execute the following commands inside the `client_certs` folder.
@@ -36,5 +35,3 @@ openssl genrsa -out server.key 2048
 # Creating the server.crt file
 openssl req -new -x509 -key server.key -out server.crt -days 365 -subj "/CN=localhost"
 ```
-
----
